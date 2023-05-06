@@ -288,6 +288,7 @@ public:
   }
 
   // Add one step, which must be valid as determined by is_step_valid.
+  //USED TO FIND 0 and 1
   void add_step(step_direction dir) {
 
     assert(is_step_valid(dir));
