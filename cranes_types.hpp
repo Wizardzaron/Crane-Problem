@@ -289,7 +289,8 @@ public:
 
   // Add one step, which must be valid as determined by is_step_valid.
   //USED TO FIND 0 and 1
-  void add_step(step_direction dir) {
+  void add_step(step_direction dir) 
+  {
 
     assert(is_step_valid(dir));
 
@@ -298,7 +299,8 @@ public:
     // Update final row, column, and total number of cranes.
     final_row_ = row_after(dir);
     final_column_ = column_after(dir);
-    if (setting_->get(final_row_, final_column_) == CELL_CRANE) {
+    if (setting_->get(final_row_, final_column_) == CELL_CRANE) 
+    {
       ++total_cranes_;
     }
   }

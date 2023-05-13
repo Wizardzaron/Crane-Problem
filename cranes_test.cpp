@@ -13,7 +13,8 @@
 //#include "cranes_types.hpp"
 #include "cranes_algs.hpp"
 
-int main() {
+int main() 
+{
 
   Rubric rubric;
 
@@ -32,9 +33,12 @@ int main() {
   cranes::path vertical_solution(vertical, {S, S, S});
 
   cranes::grid all_cranes(4, 4);
-  for (cranes::coordinate r = 0; r < 4; ++r) {
-    for (cranes::coordinate c = 0; c < 4; ++c) {
-      if (!(r == 0 && c == 0)) {
+  for (cranes::coordinate r = 0; r < 4; ++r) 
+  {
+    for (cranes::coordinate c = 0; c < 4; ++c) 
+    {
+      if (!(r == 0 && c == 0)) 
+      {
         all_cranes.set(r, c, cranes::CELL_CRANE);
       }
     }
