@@ -177,7 +177,7 @@ namespace cranes
 
         if(from_above == nullptr) // if we cannot go up without going out of bound
         { // 
-          if(c > 0 && A[r][c -1])
+          if(c > 0 && A[r][c -1] != nullptr)
           {
             //A[r][c] = A[r][c-1]
             //A[r][c] = A[r][c-1]; // getting the value at cell[r][c-1]
@@ -189,7 +189,7 @@ namespace cranes
           }
         }
 
-        else if(from_left == nullptr && from_above)
+        else if(from_left == nullptr && from_above != nullptr)
         {
           //A[r][c] = from_above;
 
@@ -199,10 +199,11 @@ namespace cranes
           //  A[r][c] = make_shared<path>(*from_above);
           //  A[r][c]->add_step(STEP_DIRECTION_SOUTH);
           // }
-
-          A[r][c] = make_shared<path>(*from_above);
-          A[r][c]->add_step(STEP_DIRECTION_SOUTH);
-
+          if(r > 0 && A[r-1][c] != nullptr)
+          {
+            A[r][c] = make_shared<path>(*from_above);
+            A[r][c]->add_step(STEP_DIRECTION_SOUTH);
+          }
         }
         
 
@@ -230,7 +231,7 @@ namespace cranes
         // }
 
 
-        else if(from_left && from_above)
+        else if(from_left != nullptr && from_above != nullptr)
         {
             if(from_left->total_cranes() > from_above->total_cranes())
             {
@@ -245,13 +246,13 @@ namespace cranes
         }
 
         //if (best == nullptr && A[r][c].has_value())
-        if (best == nullptr && A[r][c])
+        if (best == nullptr  && A[r][c] != nullptr)
         {
           //best = &A[r][c].value();
           best = A[r][c].get();
         }
         // if (A[r][c].has_value() && A[r][c].total_cranes() > best -> total_cranes())
-        if (A[r][c] && A[r][c]->total_cranes() > best -> total_cranes())
+        if (A[r][c] != nullptr && A[r][c]->total_cranes() > best -> total_cranes())
         { // comparing the new path with the previous path
           
           //best = &A[r][c].value(); // dereferrence value of the cell and assign it to best
