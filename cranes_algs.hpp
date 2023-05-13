@@ -119,13 +119,13 @@ namespace cranes
     //using cell_type = unique_ptr<path>;
     using cell_type = shared_ptr<path>;
 
-    //vector<vector<cell_type>> A(setting.rows(), vector<cell_type>(setting.columns()));
-    vector<vector<cell_type>> A(setting.rows());
+    vector<vector<cell_type>> A(setting.rows(), vector<cell_type>(setting.columns()));
+    //vector<vector<cell_type>> A(setting.rows());
 
-    for(auto& vec : A)
-    {
-      vec.resize(setting.columns());
-    }
+    // for(auto& vec : A)
+    // {
+    //   vec.resize(setting.columns());
+    // }
 
 
     path *best = nullptr; // pointing at the cell or coordinates
@@ -174,7 +174,7 @@ namespace cranes
 
         //  0 -> from above 
         //from_left ->2 2 A[r][c] = profit 
-
+        // checcking if there is a valid path 
         if(from_above == nullptr) // if we cannot go up without going out of bound
         { // 
           if(c > 0 && A[r][c -1] != nullptr)
